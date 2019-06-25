@@ -3,9 +3,16 @@ package cscholtz.android.thevideoapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class VideosActivity extends AppCompatActivity {
+
+    ListView lista;
+    String[][] datos = {
+            {"Video 1","movie.mp4"},
+            {"Video 2","movie2.mp4"}
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,8 +21,9 @@ public class VideosActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
-        TextView texto = findViewById(R.id.elTexto);
-        texto.setText(b.getString("SRV"));
+
+        lista = (ListView) findViewById(R.id.idListaVideos);
+        lista.setAdapter(new Adaptador2(this, datos, b.getString("SRV")));
 
     }
 }

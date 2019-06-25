@@ -8,15 +8,17 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class Adaptador extends BaseAdapter {
+public class Adaptador2 extends BaseAdapter {
 
     private static LayoutInflater inflater = null;
     Context contexto;
     String[][] datos;
+    String server;
 
-    public Adaptador(Context ctexto,String[][] dt){
+    public Adaptador2(Context ctexto,String[][] dt,String serverdor){
         this.contexto = ctexto;
         this.datos = dt;
+        this.server = serverdor;
         inflater = (LayoutInflater) contexto.getSystemService(ctexto.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -37,7 +39,7 @@ public class Adaptador extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         final View vista = inflater.inflate(R.layout.elemento_lista,null);
         final TextView servidor = (TextView) vista.findViewById(R.id.servidor);
         servidor.setText(datos[position][0]);
@@ -47,9 +49,10 @@ public class Adaptador extends BaseAdapter {
         vista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent VideosActivity = new Intent(contexto,VideosActivity.class);
-                VideosActivity.putExtra("SRV",datos[(Integer)vista.getTag()][1]);
-                contexto.startActivity(VideosActivity);
+                Intent VideoPlayerActivity = new Intent(contexto,VideoPlayerActivity.class);
+                String link = "https://"+server+".appspot.com/"+datos[position][1];
+                VideoPlayerActivity.putExtra("URL",link);
+                contexto.startActivity(VideoPlayerActivity);
             }
         });
 
