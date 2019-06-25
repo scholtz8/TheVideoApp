@@ -50,7 +50,7 @@ public class Adaptador2 extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent VideoPlayerActivity = new Intent(contexto,VideoPlayerActivity.class);
-                String link = "https://"+server+".appspot.com/"+datos[position][1];
+                String link = "https://"+server+".appspot.com/videos/"+datos[position][1];
                 VideoPlayerActivity.putExtra("URL",link);
                 contexto.startActivity(VideoPlayerActivity);
             }
