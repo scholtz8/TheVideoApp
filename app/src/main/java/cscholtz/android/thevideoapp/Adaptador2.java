@@ -11,31 +11,17 @@ import android.widget.TextView;
 public class Adaptador2 extends BaseAdapter {
 
     private static LayoutInflater inflater = null;
-    Context contexto;
-    String[][] datos;
-    String server;
+    private Context contexto;
+    private String[][] datos;
+    private String server;
+    private String reg;
 
-    public Adaptador2(Context ctexto,String[][] dt,String serverdor){
+    public Adaptador2(Context ctexto,String[][] dt,String serverdor,String region){
         this.contexto = ctexto;
         this.datos = dt;
         this.server = serverdor;
+        this.reg = region;
         inflater = (LayoutInflater) contexto.getSystemService(ctexto.LAYOUT_INFLATER_SERVICE);
-    }
-
-
-    @Override
-    public int getCount() {
-        return this.datos.length;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
     }
 
     @Override
@@ -52,11 +38,28 @@ public class Adaptador2 extends BaseAdapter {
                 Intent VideoPlayerActivity = new Intent(contexto,VideoPlayerActivity.class);
                 String link = "https://"+server+".appspot.com/videos/"+datos[position][1];
                 VideoPlayerActivity.putExtra("URL",link);
+                VideoPlayerActivity.putExtra("TIT",reg);
                 contexto.startActivity(VideoPlayerActivity);
             }
         });
 
 
         return vista;
+    }
+
+
+    @Override
+    public int getCount() {
+        return this.datos.length;
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return 0;
     }
 }

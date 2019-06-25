@@ -11,7 +11,7 @@ public class VideosActivity extends AppCompatActivity {
     ListView lista;
     String[][] datos = {
             {"Video 1","movie.mp4"},
-            {"Video 2","movie2.mp4"}
+            {"Video 2","nexto.mp4"}
     };
 
     @Override
@@ -23,7 +23,7 @@ public class VideosActivity extends AppCompatActivity {
         Bundle b = intent.getExtras();
 
         lista = (ListView) findViewById(R.id.idListaVideos);
-        lista.setAdapter(new Adaptador2(this, datos, b.getString("SRV")));
+        lista.setAdapter(new Adaptador2(this, datos, b.getString("SRV"),b.getString("REGION")));
 
     }
 }

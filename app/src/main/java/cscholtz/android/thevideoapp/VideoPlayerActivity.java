@@ -7,10 +7,12 @@ import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 public class VideoPlayerActivity extends AppCompatActivity {
 
+    private TextView titulo;
     private VideoView videoView;
     private Uri videoUri;
 
@@ -22,6 +24,8 @@ public class VideoPlayerActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
         videoView = (VideoView) findViewById(R.id.videoView);
+        titulo = (TextView) findViewById(R.id.tituloText);
+        titulo.setText(b.getString("TIT"));
         videoUri = Uri.parse(b.getString("URL"));
         videoView.setVideoURI(videoUri);
         videoView.requestFocus();
