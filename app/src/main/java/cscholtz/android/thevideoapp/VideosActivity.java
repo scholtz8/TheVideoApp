@@ -10,8 +10,11 @@ public class VideosActivity extends AppCompatActivity {
 
     ListView lista;
     String[][] datos = {
-            {"Video 1","movie.mp4"},
-            {"Video 2","nexto.mp4"}
+            {"144p"},
+            {"240p"},
+            {"360p"},
+            {"720p"},
+            {"1080p"}
     };
 
     @Override

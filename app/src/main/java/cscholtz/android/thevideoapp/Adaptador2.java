@@ -36,9 +36,9 @@ public class Adaptador2 extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent VideoPlayerActivity = new Intent(contexto,VideoPlayerActivity.class);
-                String link = "https://"+server+".appspot.com/videos/"+datos[position][1];
+                String link = "https://"+server+".appspot.com/videos/"+datos[position][0]+".mp4";
                 VideoPlayerActivity.putExtra("URL",link);
-                VideoPlayerActivity.putExtra("TIT",reg);
+                VideoPlayerActivity.putExtra("TIT",reg+" "+datos[position][0]);
                 contexto.startActivity(VideoPlayerActivity);
             }
         });
