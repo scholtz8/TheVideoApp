@@ -31,7 +31,7 @@ public class Adaptador extends BaseAdapter {
         vista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent VideosActivity = new Intent(contexto,VideosActivity.class);
+                Intent VideosActivity = new Intent(contexto, VideosListActivity.class);
                 VideosActivity.putExtra("REGION",datos[(Integer)vista.getTag()][0]);
                 VideosActivity.putExtra("SRV",datos[(Integer)vista.getTag()][1]);
                 contexto.startActivity(VideosActivity);

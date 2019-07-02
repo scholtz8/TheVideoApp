@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class VideosActivity extends AppCompatActivity {
+public class VideosListActivity extends AppCompatActivity {
 
     ListView lista;
     String[][] datos = {
