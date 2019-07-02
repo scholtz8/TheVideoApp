@@ -6,8 +6,7 @@ import android.widget.ListView;
 
 public class ServersListActivity extends AppCompatActivity {
 
-    ListView lista;
-
+    ListView listaServers;
     String[][] datos = {
             {"South America","easymicro-2018"},
             {"North East Asia","hidden-conquest-237802"}
@@ -18,7 +17,7 @@ public class ServersListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        lista = (ListView) findViewById(R.id.idListaServers);
-        lista.setAdapter(new Adaptador(this, datos));
+        listaServers = (ListView) findViewById(R.id.idListaServers);
+        listaServers.setAdapter(new ListadorServidores(this, datos));
     }
 }

@@ -4,11 +4,10 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
-import android.widget.TextView;
 
 public class VideosListActivity extends AppCompatActivity {
 
-    ListView lista;
+    ListView listaVideos;
     String[][] datos = {
             {"144p"},
             {"240p"},
@@ -23,10 +22,10 @@ public class VideosListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_videos);
 
         Intent intent = getIntent();
-        Bundle b = intent.getExtras();
+        Bundle bund = intent.getExtras();
 
-        lista = (ListView) findViewById(R.id.idListaVideos);
-        lista.setAdapter(new Adaptador2(this, datos, b.getString("SRV"),b.getString("REGION")));
+        listaVideos = (ListView) findViewById(R.id.idListaVideos);
+        listaVideos.setAdapter(new ListadorVideos(this, datos, bund.getString("SERVER"),bund.getString("REGION")));
 
     }
 }

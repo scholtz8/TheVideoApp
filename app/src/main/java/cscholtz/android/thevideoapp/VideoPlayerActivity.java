@@ -22,11 +22,14 @@ public class VideoPlayerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_video_player);
 
         Intent intent = getIntent();
-        Bundle b = intent.getExtras();
+        Bundle bund = intent.getExtras();
+
         videoView = (VideoView) findViewById(R.id.videoView);
         titulo = (TextView) findViewById(R.id.tituloText);
-        titulo.setText(b.getString("TIT"));
-        videoUri = Uri.parse(b.getString("URL"));
+
+        titulo.setText(bund.getString("TITULO"));
+        videoUri = Uri.parse(bund.getString("URI"));
+
         videoView.setVideoURI(videoUri);
         videoView.requestFocus();
         videoView.start();

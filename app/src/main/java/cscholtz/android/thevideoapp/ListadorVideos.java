@@ -8,37 +8,38 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class Adaptador extends BaseAdapter {
+public class ListadorVideos extends BaseAdapter {
 
     private static LayoutInflater inflater = null;
-    Context contexto;
-    String[][] datos;
+    private Context contexto;
+    private String[][] datos;
+    private String server;
+    private String region;
 
-    public Adaptador(Context ctexto,String[][] dt){
-        this.contexto = ctexto;
+    public ListadorVideos(Context ct, String[][] dt, String srv, String reg){
+        this.contexto = ct;
         this.datos = dt;
-        inflater = (LayoutInflater) contexto.getSystemService(ctexto.LAYOUT_INFLATER_SERVICE);
+        this.server = srv;
+        this.region = reg;
+        inflater = (LayoutInflater) contexto.getSystemService(ct.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         final View vista = inflater.inflate(R.layout.elemento_lista,null);
         final TextView servidor = (TextView) vista.findViewById(R.id.servidor);
         servidor.setText(datos[position][0]);
-
         vista.setTag(position);
 
         vista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent VideosActivity = new Intent(contexto, VideosListActivity.class);
-                VideosActivity.putExtra("REGION",datos[(Integer)vista.getTag()][0]);
-                VideosActivity.putExtra("SRV",datos[(Integer)vista.getTag()][1]);
-                contexto.startActivity(VideosActivity);
+                Intent VideoPlayerActivity = new Intent(contexto,VideoPlayerActivity.class);
+                VideoPlayerActivity.putExtra("URI","https://"+server+".appspot.com/videos/"+datos[position][0]+".mp4");
+                VideoPlayerActivity.putExtra("TITULO",region+" - "+datos[position][0]);
+                contexto.startActivity(VideoPlayerActivity);
             }
         });
-
-
         return vista;
     }
 
@@ -56,5 +57,4 @@ public class Adaptador extends BaseAdapter {
     public long getItemId(int position) {
         return 0;
     }
-
 }
