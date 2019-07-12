@@ -34,8 +34,16 @@ public class ListadorVideos extends BaseAdapter {
         vista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String UriStr;
+
+                if(region.equals("Locally")){
+                    UriStr = server+"m"+datos[position][0];
+                }
+                else{
+                    UriStr = server+datos[position][0]+".mp4";
+                }
                 Intent VideoPlayerActivity = new Intent(contexto,VideoPlayerActivity.class);
-                VideoPlayerActivity.putExtra("URI","https://"+server+".appspot.com/videos/"+datos[position][0]+".mp4");
+                VideoPlayerActivity.putExtra("URI",UriStr);
                 VideoPlayerActivity.putExtra("TITULO",region+" - "+datos[position][0]);
                 contexto.startActivity(VideoPlayerActivity);
             }

@@ -8,8 +8,9 @@ public class ServersListActivity extends AppCompatActivity {
 
     ListView listaServers;
     String[][] datos = {
-            {"South America","easymicro-2018"},
-            {"North East Asia","hidden-conquest-237802"}
+            {"Locally","android.resource://cscholtz.android.thevideoapp/raw/"},
+            {"South America","https://easymicro-2018.appspot.com/videos/"},
+            {"North East Asia","https://hidden-conquest-237802.appspot.com/videos/"}
     };
 
     @Override
