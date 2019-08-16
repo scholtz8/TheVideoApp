@@ -37,10 +37,10 @@ public class ListadorVideos extends BaseAdapter {
                 String UriStr;
 
                 if(region.equals("Locally")){
-                    UriStr = server+"m"+datos[position][0];
+                    UriStr = server+"m"+datos[position][0]+"p";
                 }
                 else{
-                    UriStr = server+datos[position][0]+".mp4";
+                    UriStr = server+datos[position][0];
                 }
                 Intent VideoPlayerActivity = new Intent(contexto,VideoPlayerActivity.class);
                 VideoPlayerActivity.putExtra("URI",UriStr);
