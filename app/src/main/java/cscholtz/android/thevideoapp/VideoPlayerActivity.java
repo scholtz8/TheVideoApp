@@ -60,11 +60,11 @@ public class VideoPlayerActivity extends AppCompatActivity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                long diff = d2.getTime() - d1.getTime();
+                long diff = (d2.getTime() - d1.getTime())/1000;
                 t3 = String.valueOf(diff);
                 ts1.setText(t1);
                 ts2.setText(t2);
-                t.setText(t3+"ms");
+                t.setText(t3+"s");
             }
         });
 
