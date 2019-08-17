@@ -25,6 +25,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
     private TextView ts1, ts2, t;
     private SimpleDateFormat tsf;
     private String t1, t2, t3;
+    private Date d1, d2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,8 @@ public class VideoPlayerActivity extends AppCompatActivity {
         ts2 = (TextView) findViewById(R.id.timestampText2);
         t = (TextView) findViewById(R.id.timeText);
         tsf = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+        d1 = null;
+        d2 = null;
 
         titulo.setText(bund.getString("TITULO"));
         videoUri = Uri.parse(bund.getString("URI"));
@@ -51,7 +54,6 @@ public class VideoPlayerActivity extends AppCompatActivity {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 t2 = tsf.format(new Date());
-                Date d1 = null, d2 = null;
                 try {
                     d1 = tsf.parse(t1);
                     d2 = tsf.parse(t2);
@@ -59,11 +61,10 @@ public class VideoPlayerActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 long diff = d2.getTime() - d1.getTime();
-                long diffS = diff/1000;
-                t3 = String.valueOf(diffS);
+                t3 = String.valueOf(diff);
                 ts1.setText(t1);
                 ts2.setText(t2);
-                t.setText(t3+"s");
+                t.setText(t3+"ms");
             }
         });
 
