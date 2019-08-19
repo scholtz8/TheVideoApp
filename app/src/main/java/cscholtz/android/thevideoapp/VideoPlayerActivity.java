@@ -41,14 +41,13 @@ public class VideoPlayerActivity extends AppCompatActivity {
         ts1 = (TextView) findViewById(R.id.timestampText1);
         ts2 = (TextView) findViewById(R.id.timestampText2);
         t = (TextView) findViewById(R.id.timeText);
-        tsf = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+        tsf = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss.SSS");
         d1 = null;
         d2 = null;
 
         titulo.setText(bund.getString("TITULO"));
         videoUri = Uri.parse(bund.getString("URI"));
-        videoView.setVideoURI(videoUri);
-        videoView.requestFocus();
+
 
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -60,11 +59,11 @@ public class VideoPlayerActivity extends AppCompatActivity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                long diff = (d2.getTime() - d1.getTime())/1000;
+                long diff = (d2.getTime() - d1.getTime());
                 t3 = String.valueOf(diff);
                 ts1.setText(t1);
                 ts2.setText(t2);
-                t.setText(t3+"s");
+                t.setText(t3+" miliseconds");
             }
         });
 
@@ -72,6 +71,8 @@ public class VideoPlayerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     t1 = tsf.format(new Date());
+                    videoView.setVideoURI(videoUri);
+                    videoView.requestFocus();
                     videoView.start();
                     playBut.setEnabled(false);
             }
