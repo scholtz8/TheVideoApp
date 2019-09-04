@@ -74,7 +74,6 @@ public class VideoPlayerActivity extends AppCompatActivity {
                     videoView.setVideoURI(videoUri);
                     videoView.requestFocus();
                     videoView.start();
-                    playBut.setEnabled(false);
             }
         });
 
